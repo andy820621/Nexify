@@ -12,12 +12,12 @@ export default defineConfig({
 		},
 	},
 	server: {
-		host: "http://nexify-test.vercel.app/",
 		proxy: {
 			"/api": {
 				target: "http://nexifytw.mynetgear.com:45000/api/Record",
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/api/, ""),
+				secure: false,
 			},
 		},
 	},
