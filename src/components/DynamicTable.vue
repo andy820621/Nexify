@@ -87,6 +87,11 @@ async function getData() {
 			};
 		});
 		oldData.value = result;
+
+		ElMessage({
+			type: "success",
+			message: "Successfully update the data!",
+		});
 	} catch (err) {
 		ElMessage({
 			type: "error",
@@ -94,11 +99,6 @@ async function getData() {
 		});
 	}
 	loading.value = false;
-
-	ElMessage({
-		type: "success",
-		message: "Successfully update the data!",
-	});
 
 	dataChanged.value = false;
 }
