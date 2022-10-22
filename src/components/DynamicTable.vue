@@ -125,11 +125,9 @@ async function updateData() {
 	}
 }
 async function pushData(data) {
+	loading.value = true;
 	try {
-		const response = await axios.post(
-			"http://nexifytw.mynetgear.com:45000/api/Record/SaveRecords",
-			data
-		);
+		const response = await axios.post("/api/SaveRecords", data);
 		ElMessage({
 			type: "success",
 			message: "Successfully post the data!",
@@ -140,6 +138,7 @@ async function pushData(data) {
 			message: err,
 		});
 	}
+	loading.value = false;
 }
 function addNewMember() {
 	newData.value.push({
@@ -150,10 +149,12 @@ function addNewMember() {
 	});
 }
 async function saveData() {
+	if (oldData.value.length === 0) return;
 	if (!dataSaved.value || dataChanged.value) {
-		oldData.value = [...oldData.value, ...newData.value];
-		await pushData(oldData.value);
+		let temp = [...oldData.value, ...newData.value];
 		newData.value = [];
+		oldData.value = temp;
+		await pushData(temp);
 		dataChanged.value = false;
 	}
 }
