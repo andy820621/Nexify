@@ -1,7 +1,7 @@
 {
 	"headers": [
 		{
-			"source": "/api/(.*)",
+			"source": "http://nexifytw.mynetgear.com:45000/api/Record/(.*)",
 			"headers": [
 				{ "key": "Access-Control-Allow-Credentials", "value": "true" },
 				{ "key": "Access-Control-Allow-Origin", "value": "*" },
