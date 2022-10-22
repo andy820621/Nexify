@@ -16,8 +16,8 @@ export default defineConfig({
 			"/api": {
 				target: "http://nexifytw.mynetgear.com:45000/api/Record",
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, ""),
 				secure: false,
+				rewrite: (path) => path.replace(/^\/api/, ""),
 			},
 		},
 	},
