@@ -74,9 +74,7 @@ const dataChanged = ref(false);
 async function getData() {
 	loading.value = true;
 	try {
-		const response = await axios.get(
-			"http://nexifytw.mynetgear.com:45000/api/Record/GetRecords"
-		);
+		const response = await axios.get("/api/GetRecords");
 		let data = response.data.Data;
 		let result = data.map((item) => {
 			return {
