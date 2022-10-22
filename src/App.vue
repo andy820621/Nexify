@@ -7,3 +7,9 @@
 <script setup>
 import DynamicTable from "./components/DynamicTable.vue";
 </script>
+
+<style>
+html {
+	font-family: "Roboto", sans-serif;
+}
+</style>
