@@ -11,14 +11,4 @@ export default defineConfig({
 			"@": fileURLToPath(new URL("./src", import.meta.url)),
 		},
 	},
-	// server: {
-	// 	proxy: {
-	// 		"/api": {
-	// 			target: "http://nexifytw.mynetgear.com:45000/api/Record",
-	// 			changeOrigin: true,
-	// 			secure: false,
-	// 			rewrite: (path) => path.replace(/^\/api/, ""),
-	// 		},
-	// 	},
-	// },
 });
