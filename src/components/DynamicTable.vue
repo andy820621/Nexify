@@ -27,7 +27,7 @@
 			<el-table-column label="Birthday" max-width="300">
 				<template #default="scope">
 					<el-date-picker
-						v-model="scope.row.birth"
+						v-model="scope.row.DateOfBirth"
 						class="w-50 m-2"
 						placeholder="Pick a date"
 						type="date"
@@ -79,7 +79,7 @@ async function getData() {
 		let result = data.map((item) => {
 			return {
 				name: item.Name,
-				birth: item.DateOfBirth,
+				DateOfBirth: new Date(item.DateOfBirth),
 				salary: item.Salary,
 				address: item.Address,
 			};
@@ -127,7 +127,13 @@ async function updateData() {
 async function pushData(data) {
 	loading.value = true;
 	try {
-		const response = await axios.post("/api/SaveRecords", data);
+		let formattedData = data.map((item) => {
+			item.DateOfBirth = new Date(`${item.DateOfBirth}`)
+				.toLocaleDateString()
+				.replaceAll("/", "-");
+			return item;
+		});
+		const response = await axios.post("/api/SaveRecords", formattedData);
 		ElMessage({
 			type: "success",
 			message: "Successfully post the data!",
