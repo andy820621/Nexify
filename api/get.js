@@ -4,9 +4,7 @@ export default async (req, res) => {
 			"http://nexifytw.mynetgear.com:45000/api/Record/GetRecords"
 		);
 		console.log(data);
-		res.status(200).json({
-			body: data,
-		});
+		res.send(data);
 	} catch (err) {
 		res.send({ message: err });
 	}
