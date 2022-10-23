@@ -5,7 +5,7 @@ export default async (req, res) => {
 		);
 		res.set("Access-Control-Allow-Origin", "*");
 		console.log(data);
-		return res.send(data);
+		res.json(data);
 	} catch (err) {
 		res.send({ message: err });
 	}
