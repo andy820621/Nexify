@@ -75,7 +75,7 @@ async function getData() {
 	loading.value = true;
 	try {
 		const response = await axios.get(
-			"https://nexify-test.vercel.app/:3000/api/GetRecords"
+			"https://nexify-test.vercel.app:3000/api/GetRecords"
 		);
 		let data = response.data;
 		let result = data.map((item) => {
