@@ -1,7 +1,8 @@
-import { createProxyMiddleware } from "http-proxy-middleware";
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
-export default (req, res) => {
+module.exports = (req, res) => {
 	let target = "";
+
 	if (req.url.startsWith("/backend")) {
 		target = "http://nexifytw.mynetgear.com:45000/api/Record";
 	}
