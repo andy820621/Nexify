@@ -7,6 +7,7 @@ export default async (req, res) => {
 		res.status(200).json({
 			body: data,
 		});
+		return data;
 	} catch (err) {
 		res.send({ message: err });
 	}
