@@ -1,6 +1,8 @@
+import axios from "axios";
+
 async function getData() {
 	try {
-		let data = await fetch(
+		let data = await axios.get(
 			"http://nexifytw.mynetgear.com:45000/api/Record/GetRecords"
 		);
 		return data;
@@ -16,7 +18,6 @@ export default async (req, res) => {
 		res.status(200).json({
 			body: data,
 		});
-		return data;
 	} catch (err) {
 		res.send({ message: err });
 	}
