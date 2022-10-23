@@ -3,9 +3,10 @@ export default async (req, res) => {
 		let data = await fetch(
 			"http://nexifytw.mynetgear.com:45000/api/Record/GetRecords"
 		);
-		res.set("Access-Control-Allow-Origin", "*");
 		console.log(data);
-		res.send(data);
+		res.status(200).json({
+			body: data,
+		});
 	} catch (err) {
 		res.send({ message: err });
 	}
