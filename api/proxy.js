@@ -1,16 +1,26 @@
-import { createProxyMiddleware } from "http-proxy-middleware";
+import request from "request";
 
 export default (req, res) => {
-	let target = "";
-
-	if (req.url.startsWith("/backend")) {
-		target = "http://nexifytw.mynetgear.com:45000/api/Record";
+	let prefix = "/backend";
+	if (!req.url.startsWith(prefix)) {
+		return;
 	}
-	createProxyMiddleware({
-		target,
-		changeOrigin: true,
-		pathRewrite: {
-			"^/backend/": "/",
+	let target =
+		"http://nexifytw.mynetgear.com:45000/api/Record/" +
+		req.url.substring(prefix.length);
+
+	var options = {
+		method: "GET",
+		url: target,
+		headers: {
+			"Notion-Version": res.headers["notion-version"],
+			Authorization: res.headers["authorization"],
 		},
-	})(req, res);
+	};
+	request(options, function (error, response) {
+		if (error) throw new Error(error);
+		res.writeHead(200, { "Content-Type": "application/json" });
+		res.write(response.body);
+		res.end();
+	});
 };
