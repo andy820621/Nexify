@@ -6,7 +6,6 @@ app.get("/api/GetRecords", async (req, res) => {
 		let data = await axios.get(
 			"http://nexifytw.mynetgear.com:45000/api/Record/GetRecords"
 		);
-		console.log(data.data.Data);
 		res.set("Access-Control-Allow-Origin", "*");
 		res.send(data.data.Data);
 	} catch (err) {
