@@ -1,13 +1,8 @@
 {
-	"headers": [
+	"rewrites": [
 		{
-			"source": "/(.*)",
-			"headers": [
-				{
-					"key": "access-control-allow-origin",
-					"value": "*"
-				}
-			]
+			"source": "/backend",
+			"destination": "/api/proxy"
 		}
 	]
 }
