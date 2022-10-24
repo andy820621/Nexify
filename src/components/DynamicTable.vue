@@ -74,9 +74,8 @@ const dataChanged = ref(false);
 async function getData() {
 	loading.value = true;
 	try {
-		const response = await axios.get(
-			"http://nexifytw.mynetgear.com:45000/api/Record/GetRecords"
-		);
+		const response = await axios.get("/backend/GetRecords");
+		console.log(response);
 		let data = response.data.Data;
 		let result = data.map((item) => {
 			return {
@@ -135,10 +134,7 @@ async function pushData(data) {
 				.replaceAll("/", "-");
 			return item;
 		});
-		const response = await axios.post(
-			"http://nexifytw.mynetgear.com:45000/api/Record/SaveRecords",
-			formattedData
-		);
+		const response = await axios.post("/backend/SaveRecords", formattedData);
 		ElMessage({
 			type: "success",
 			message: "Successfully post the data!",
