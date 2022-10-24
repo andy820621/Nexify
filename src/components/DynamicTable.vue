@@ -76,7 +76,7 @@ async function getData() {
 	try {
 		const response = await axios.get("/backend/GetRecords");
 		console.log(response);
-		let data = response.data;
+		let data = response.data.Data;
 		let result = data.map((item) => {
 			return {
 				name: item.Name,
